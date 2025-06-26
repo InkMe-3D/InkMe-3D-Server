@@ -312,7 +312,7 @@ router.post(`/forgot-password`, async (req, res) => {
     user.resetToken = resetToken;
     await user.save();
     //create link user click when verify
-    const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+    const resetLink = `${process.env.VITE_APP_BASE_URL}/reset-password/${resetToken}`;
     //call function send email verification
     await sendEmailResetPassword(email, resetLink);
 
